@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>blw</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h2>All Information!</h2>
+    <br>
+    <form method="get" action="/blw/new">
+        <button>New Entry</button>
+    </form>
+    <br>
+    <div class="find">
+        <h3>Find By Id</h3>
+        <br>
+        <form method="get" action="/blw/search">
+            <button>Find By Id Only</button>
+        </form>
+    </div>
+    <br>
+
+    <% for(let user of users) { %>
+        <div class="chat">
+            <p>Department Id: <i><%= user.systemid %></i></p>
+            <div class="msg">
+                <p>Department Name: <%= user.department %></p>
+            </div>
+            <p>Status: <i><%= user.status %></i></p>
+            <hr>
+            <form method="POST" action="/blw/<%= user._id %>?_method=DELETE">
+                <button>Delete</button>
+            </form>
+        </div>
+        <br><br>
+    <% } %>
+
+    <script src="app.js"></script>
+</body>
+</html>
